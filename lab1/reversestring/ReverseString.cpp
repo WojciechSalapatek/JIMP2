@@ -9,10 +9,6 @@ string reverse(std::string str) {
 
     int length = str.length();
     string result = str;
-    for (int i=0;i<length;i++) {
-        std::cout<<str[i]<<std::endl;
-        result[length-i-1] = str[i];
-    }
-    std::cout<<result<<std::endl;
+    for (int i=0;i<length;i++) result[length-i-1] = str[i];
     return result;
 }
