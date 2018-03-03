@@ -31,7 +31,7 @@ bool IsBinaryPalindrome(int value) {
 }
 
 uint64_t DoubleBasePalindromes(int max_vaule_exculsive){
-    int result = 0;
+    uint64_t result = 0;
     if (max_vaule_exculsive < 0) return 0;
     for (int i=1;i<max_vaule_exculsive;i+=2) if(is_palindrome(i)) if(IsBinaryPalindrome(i)) result+=i;
     return result;
