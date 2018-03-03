@@ -14,6 +14,7 @@ void PrintTable(int tab[][10]){
         }
         cout<<endl;
     }
+    cout<<endl;
 }
 
 void MultiplicationTable(int tab[][10]) {
