@@ -19,11 +19,11 @@ void menu(){
     if(choice == 1) {
         cout<<"Podaj wyraz"<<endl;
         cin>>str;
-        if(is_palindrome(str)) cout<<"wyraz jest palindromem"<<endl;
+        if(IsPalindrome(str)) cout<<"wyraz jest palindromem"<<endl;
         else cout<<"wyraz nie jest palindromem"<<endl;
     }
 }
-bool is_palindrome(string str){
+bool IsPalindrome(string str){
     int length = (int) str.length();
     for (int i=0;i<length/2;i++) if (str[i] != str[length-i-1]) return false;
 
