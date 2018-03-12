@@ -5,7 +5,7 @@
 #include "ReverseString.h"
 using std::string;
 
-string reverse(std::string str) {
+string Reverse(std::string str) {
 
     int length = str.length();
     string result = str;

@@ -2,6 +2,6 @@
 #include "ReverseString.h"
 
 int main() {
-  std::cout << "reverse of abc is" << reverse("abc") << std::endl;
+  std::cout << "Reverse of abc is" << Reverse("abc") << std::endl;
   return 0;
 }
