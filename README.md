@@ -1,6 +1,6 @@
 ### C++ programming classes problmes ###
 
-[![Build Status](https://travis-ci.org/wojciechsalapatek/cpp-exercises.svg?branch=master)](https://travis-ci.org/wojciechsalapatek/cpp-exercises)
+[![Build Status](https://travis-ci.org/wojciechsalapatek/cpp-exercises.svg?branch=master)](https://travis-ci.org/wojciechsalapatek/JIMP2)
 [![Build status](https://ci.appveyor.com/api/projects/status/39thleljhjmtof0t?svg=true)](https://ci.appveyor.com/project/wojciechsalapatek/cpp-exercises)
 
 After cloning please replace badges with your project's badges
