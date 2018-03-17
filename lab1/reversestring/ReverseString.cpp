@@ -6,7 +6,6 @@
 using std::string;
 
 string Reverse(std::string str) {
-
     int length = str.length();
     string result = str;
     for (int i=0;i<length;i++) result[length-i-1] = str[i];

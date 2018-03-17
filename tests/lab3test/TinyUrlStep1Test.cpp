@@ -27,6 +27,7 @@ TEST_P(TinyUrlStep1, DefineMethod_NextHash) {
   FillArray(param.second, &expected);
   ::tinyurl::NextHash(&arg);
   EXPECT_EQ(expected, arg);
+
 }
 
 std::vector<TestParam> tinyUrlTestData
