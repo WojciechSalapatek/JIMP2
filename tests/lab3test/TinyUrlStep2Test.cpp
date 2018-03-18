@@ -30,7 +30,7 @@ TEST_P(TinyUrlStep2, DefineMethod_Init_Encode_Decode) {
   const auto hash = tinyurl::Encode(url, &codec);
   auto decoded_url = tinyurl::Decode(codec, hash);
   EXPECT_EQ(url, decoded_url);
-}
+
 
 std::vector<TestParam> tinyUrlBunchOfUrlsTestData
     {"https://google.com", "https://wikipedia.org", "https://regex101.com/",
