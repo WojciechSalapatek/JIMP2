@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "SmartTree.h"
-#include <cmath>
+#include <vector>;
 
 
 namespace datastructures{
@@ -50,8 +50,75 @@ namespace datastructures{
         return output;
     }
 
-    std::unique_ptr <SmartTree> RestoreTree(const std::string &tree){
+    std::string Reverse(std::string str) {
+        int length = str.length();
+        std::string result = str;
+        for (int i=0;i<length;i++) result[length-i-1] = str[i];
+        return result;
+    }
 
+    std::unique_ptr <SmartTree> RestoreTree(const std::string &tree){
+        if (tree == "[none]") return nullptr;
+        int nones = 0;
+        int noNones = 0;
+        bool startNumber = false;
+        bool isNegative = false;
+        int value = 0;
+        std::string number = "";
+        std::vector<std::unique_ptr <SmartTree>> list;
+        std::unique_ptr <SmartTree> leaf;
+        std::unique_ptr <SmartTree> tmp;
+        for (int i = tree.length()-1; i >=0; --i) {
+            if (tree[i] > 47 && tree[i] < 58) {
+                startNumber = true;
+                number += tree[i];
+            }
+            else if(tree[i] == 'e') nones++;
+            else if(tree[i] == '-') isNegative = true;
+            else {
+                number = Reverse(number);
+                if(startNumber){
+                    if (isNegative) value = - std::stoi(number);
+                    else value = std::stoi(number);
+
+                    if(nones==2) {
+                        leaf = CreateLeaf(value);
+                        list.insert(list.begin(), CreateLeaf(value));
+                        nones=0;
+                        noNones = 0;
+
+                    }
+                    else if (nones==0) {
+                        noNones++;
+                        leaf = CreateLeaf(value);
+                        if (noNones == 2){
+                            leaf = InsertLeftChild(std::move(leaf), std::move(list[1]));
+                            leaf = InsertRightChild(std::move(leaf), std::move(list[3]));
+                        }
+                        else{
+                            list.insert(list.begin() + 2,InsertLeftChild(std::move(leaf), move(list[0])));
+                            list.insert(list.begin() + 3, InsertRightChild(std::move(list[2]), move(list[1])));
+                            list.erase(list.begin());
+                            list.erase(list.begin());
+
+                        }
+                    }
+                    else {
+                        leaf = CreateLeaf(value);
+                        list.insert(list.begin(), CreateLeaf(value));
+                        if (list.size() == 3){
+                            list[1] = InsertRightChild(std::move(list[1]), std::move(list[2]));
+                            leaf = InsertLeftChild(std::move(leaf), std::move(list[1]));
+                            list.clear();
+                        }
+                    }
+                }
+                startNumber = false;
+                number = "";
+                isNegative = false;
+            }
+        }
+        std::cout<<DumpTree(leaf)<<std::endl;
+        return leaf;
     }
 }
-
