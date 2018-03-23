@@ -22,13 +22,19 @@ void View::SetPattern(const string &pattern){
 
 std::string nets::View::Render(const std::unordered_map <std::string, std::string> &model) const {
     std::smatch matches;
-    string result = View::GetPattern();
-    for (auto i: model){
-        std::regex sub {"\\{\\{" + i.first + "\\}\\}"};
-        while(std::regex_search(result, matches, sub)) result = matches.prefix().str() + i.second + matches.suffix().str();
+    std::string result = "";
+    string sketch = View::GetPattern();
+    std::regex sub {"\\{\\{([^\\{\\}]*)\\}\\}"};
+    while(std::regex_search(sketch, matches, sub)){
+        auto find = model.find(matches[1]);
+        if (find != model.end()) {
+            result += matches.prefix().str() + find->second;
+        }
+        else result += matches.prefix().str();
+
+        sketch = matches.suffix().str();
     }
-    std::regex missing("\\{\\{[^\\{\\}]*\\}\\}");
-    if(std::regex_search(result, matches, missing)) result = matches.prefix().str() + matches.suffix().str();
-    cout<<matches[0]<<endl;
+    result += sketch;
+
     return result;
 }
