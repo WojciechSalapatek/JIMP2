@@ -12,18 +12,30 @@ using ::std::pair;
 
 using std::string;
 using std::vector;
+
+typedef std::complex<double> complex;
 namespace algebra {
     class Matrix {
     public:
         Matrix();
 
+        ~Matrix();
+
         Matrix(int rows, int cols);
 
-        Matrix(std::initializer_list<vector<std::complex<double>>>);
+        Matrix(std::initializer_list<vector<complex>>);
 
         Matrix(string toParse);
 
+        Matrix(const Matrix &other);
+
+        Matrix & operator=(const Matrix &other);
+
         string Print() const;
+
+        complex GetElement(int r, int c) const;
+
+        void SetElement(int r, int c, complex value);
 
         Matrix Add(Matrix other) const;
 
@@ -33,11 +45,11 @@ namespace algebra {
 
         Matrix Pow(int to) const;
 
-        pair<int,int> Size();
+        pair<long unsigned int, long unsigned int> Size() const;
 
 
     private:
-        std::complex<double> **data;
+        complex **data;
         int l[5];
         int rows;
         int cols;
