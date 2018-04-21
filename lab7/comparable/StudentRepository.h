@@ -7,7 +7,6 @@
 
 #include <string>
 #include <vector>
-#include "../../lab7/academiaqueries/StudentRepositoryQueries.h"
 
 using std::string;
 
@@ -59,7 +58,6 @@ namespace academia {
         int StudentCount() const;
         Student & operator[](const string &id) ;
         bool operator==(const StudentRepository &other) const;
-        
 
     private:
         int studentCount;

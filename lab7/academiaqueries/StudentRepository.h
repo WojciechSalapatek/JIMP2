@@ -7,11 +7,12 @@
 
 #include <string>
 #include <vector>
-#include "../../lab7/academiaqueries/StudentRepositoryQueries.h"
-
+#include "StudentRepositoryQueries.h"
+#include <memory>
 using std::string;
 
 namespace academia {
+    class Query;
     class StudyYear{
     public:
         StudyYear();
@@ -59,7 +60,8 @@ namespace academia {
         int StudentCount() const;
         Student & operator[](const string &id) ;
         bool operator==(const StudentRepository &other) const;
-        
+
+        std::vector<Student> FindByQuery(std::unique_ptr<Query> query);
 
     private:
         int studentCount;

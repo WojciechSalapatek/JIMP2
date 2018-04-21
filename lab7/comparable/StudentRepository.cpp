@@ -4,8 +4,6 @@
 
 #include "StudentRepository.h"
 #include<istream>
-#include <bits/unique_ptr.h>
-
 namespace academia {
     StudyYear::StudyYear() : year(1){}
 
@@ -103,12 +101,5 @@ namespace academia {
 
     bool StudentRepository::operator==(const StudentRepository &other) const{
         return (rep == other.rep);
-    }
-
-    std::vector<Student> StudentRepository::FindByQuery(std::unique_ptr<Query> query) {
-            std::vector<Student> result;
-
-            for (auto const &i : rep) if(query->Accept(i)) result.push_back(i);
-            return result;
     }
 }
