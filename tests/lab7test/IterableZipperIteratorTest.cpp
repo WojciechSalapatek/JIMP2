@@ -29,7 +29,5 @@ TEST_F(IterableTests, ImplementsZipperIterator) {
   EXPECT_EQ(expected_pair, it.Dereference());
   std::unique_ptr<IterableIterator> next_it = make_unique<ZipperIterator>(vi.begin()+1,vs.begin()+1, vi.end(), vs.end());
   EXPECT_TRUE( it.NotEquals(next_it));
-    ZipperIterator z = it.Next();
-    //n.NotEquals(next_it);
- // EXPECT_FALSE(it.Next().NotEquals(next_it));
+  EXPECT_FALSE(it.Next().NotEquals(next_it));
 }
