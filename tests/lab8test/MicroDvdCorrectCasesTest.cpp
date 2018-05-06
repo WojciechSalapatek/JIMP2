@@ -46,8 +46,11 @@ TEST_F(MicroDvdCorrectCasesTest, OverlappingSubtitlesAreCorrect) {
 
 TEST_F(MicroDvdCorrectCasesTest, TextWithFormattingIsCorrect) {
   auto subs = make_unique<MicroDvdSubtitles>();
-  stringstream in {"{0}{100}{y:b}bold text\n{144}{299}{s:12}12 Font used\n{280}{350}{c:$0000FF}Hello!\n{1000}{1050}Multi|Line|Text\n"};
+  stringstream in{
+          "{0}{100}{y:b}bold text\n{144}{299}{s:12}12 Font used\n{280}{350}{c:$0000FF}Hello!\n{1000}{1050}Multi|Line|Text\n"};
   stringstream out;
   subs->ShiftAllSubtitlesBy(2300, 20, &in, &out);
-  EXPECT_PRED2(MatchesUpToExtraNewLine,"{46}{146}{y:b}bold text\n{190}{345}{s:12}12 Font used\n{326}{396}{c:$0000FF}Hello!\n{1046}{1096}Multi|Line|Text"s,out.str());
+  EXPECT_PRED2(MatchesUpToExtraNewLine,
+               "{46}{146}{y:b}bold text\n{190}{345}{s:12}12 Font used\n{326}{396}{c:$0000FF}Hello!\n{1046}{1096}Multi|Line|Text"s,
+               out.str());
 }
