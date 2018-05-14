@@ -12,6 +12,7 @@
 #include <MemLeakTest.h>
 #include <Serialization.h>
 
+
 using ::academia::Building;
 using ::academia::Room;
 using ::academia::Serializer;
