@@ -100,26 +100,14 @@ namespace academia {
                             find = true;
                             break;
                         }
-                        if(find) break;
                     }
                     if(find) break;
                 }
-                if(!find) {
-
-                    throw NoViableSolutionFound();
-                }
+                if(!find) throw NoViableSolutionFound();
 
             }
         }
         return result;
-    }
-
-    int  GreedyScheduler::FindFreeRoom(int time, const Schedule &schedule, const std::vector<int> &rooms) {
-        for(const auto &room : rooms){
-            vector<int> available = schedule.OfRoom(room).AvailableTimeSlots(time + 1);
-            if(std::find(available.begin(), available. end(), time) != available.end()) return room;
-        }
-        return -1;
     }
 
 

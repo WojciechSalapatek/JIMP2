@@ -66,7 +66,6 @@ namespace academia {
         &teacher_courses_assignment, const std::map<int, std::set<int>> &courses_of_year, int n_time_slots) override ;
 
     private:
-        int FindFreeRoom(int slots, const Schedule &schedule, const std::vector<int> &rooms);
         int FindYear(const std::map<int, std::set<int>> &courses_of_year, int course, const Schedule &schedule, int time);
         bool isHeAvailable(int teacher, int time, const Schedule &schedule);
         bool isRoomAvailable(int room, int time, const Schedule &schedule);
