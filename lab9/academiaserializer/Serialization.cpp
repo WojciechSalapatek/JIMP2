@@ -169,3 +169,4 @@ void academia::BuildingRepository::StoreAll(academia::Serializer *serializer) co
 std::experimental::optional<academia::Building> academia::BuildingRepository::operator[](int id) const{
     for (const Building &b : buildings_) if(b.Id() == id) return b;
 }
+
